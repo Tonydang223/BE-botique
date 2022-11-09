@@ -6,7 +6,7 @@ const authCtrl = {
   register: async (req, res) => {
     try {
       const { username, email, password, avatar } = req.query;
-
+      
       const userName = await Users.findOne({ username });
 
       if (userName) {

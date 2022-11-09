@@ -252,7 +252,7 @@ const userCtrl = {
       const accessToken = createAccessToken({ id: user._id });
       const url = `${process.env.CLIENT_URL}/reset/${accessToken}`;
       const htmlResult = `<div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the Mytoandeptrainhatthegian.</h2>
+      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the boutique shop.</h2>
       <p>Congratulations! You're almost set to start using my website.
           Just click the button below to validate your email address.
       </p>
@@ -263,7 +263,7 @@ const userCtrl = {
   
       <div>${url}</div>
       <p>If you have any questions about our website, you can also click on the link below to contact us:</p>
-      <a href="https://www.facebook.com/bito.hihi/" style="text-decoration: none;padding: 10px 20px; display: inline-block">https://www.facebook.com/bito.hihi/</a>
+      <p>Phone: 0774553415</p>
       </div>`;
 
       await mailer.sendMail(req.query.email, "Reset your password", htmlResult);

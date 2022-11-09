@@ -82,6 +82,7 @@ const emailCtrl = {
           res.send(error);
         });
     } catch (err) {
+      console.log("🚀 ~ file: emailCtrl.js ~ line 85 ~ sendEmail: ~ err", err.message)
       return res.status(500).json({ msg: err.message });
     }
   },
