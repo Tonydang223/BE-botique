@@ -9,10 +9,7 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
-}));
+app.use(cors());
 app.use(cookieParser());
 app.use(morgan('combined'));
 
@@ -41,13 +38,11 @@ app.use("/api", require("./routers/ratingRouter"));
 app.use("/api", require("./routers/notifyRouter"));
 
 //!important
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  const buildDir = path.join(__dirname, "/build")
+  app.use(express.static(buildDir));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(buildDir, "index.html"));
   });
-}
-
 connectDB();
 
 http.listen(port, () => {
