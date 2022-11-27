@@ -13,10 +13,11 @@ const favouriteCtrl = {
           $push: { products: idProduct },
         });
       } else {
-        const newFavourite = {
+        const newFav = new Favourites({
           idUser,
-          products: [idProduct],
-        };
+          products: [].push(idProduct),
+        })
+        await newFav.save();
       }
     } catch (err) {
       return res.status(500).json({ msg: err.message });
