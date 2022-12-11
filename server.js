@@ -38,11 +38,11 @@ app.use("/api", require("./routers/ratingRouter"));
 app.use("/api", require("./routers/notifyRouter"));
 
 //!important
-  const buildDir = path.join(__dirname, "/build")
-  app.use(express.static(buildDir));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(buildDir, "index.html"));
-  });
+  // const buildDir = path.join(__dirname, "/build")
+  // app.use(express.static(buildDir));
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.join(buildDir, "index.html"));
+  // });
 connectDB();
 
 http.listen(port, () => {

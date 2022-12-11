@@ -3,11 +3,13 @@ const jwt = require("jsonwebtoken");
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.header("Authorization");
+    const token = req.headers.authorization;
+    console.log("🚀 ~ file: auth.js:7 ~ auth ~ token", token)
 
     if (!token) return res.status(400).json({ msg: "Invalid Authentication." });
 
-    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    const decoded = jwt.verify(token.replace(/['"]+/g, ""), process.env.ACCESS_TOKEN_SECRET);
+    // console.log("🚀 ~ file: auth.js:12 ~ auth ~ decoded", decoded)
     if (!decoded)
       return res.status(400).json({ msg: "Invalid Authentication." });
 

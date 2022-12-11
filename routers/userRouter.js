@@ -4,25 +4,25 @@ const auth = require("../middlewares/auth");
 
 router
   .route("/user")
-  .get(userCtrl.getUser)
-  .delete(userCtrl.deleteUser)
-  .patch(userCtrl.updateUser);
+  .get(auth ,userCtrl.getUser)
+  .delete(auth ,userCtrl.deleteUser)
+  .patch(auth, userCtrl.updateUser);
 
-router.get("/allUsers", userCtrl.getAllUsers);
+router.get("/allUsers",auth , userCtrl.getAllUsers);
 
-router.get("/search", userCtrl.searchUser);
+router.get("/search",auth,  userCtrl.searchUser);
 
-router.get("/userStats", userCtrl.getUsersStats);
+router.get("/userStats",auth,  userCtrl.getUsersStats);
 
-router.patch("/updateUserFromAdmin", userCtrl.updateUserFromAdmin);
+router.patch("/updateUserFromAdmin",auth , userCtrl.updateUserFromAdmin);
 
-router.patch("/updatePasswordFromAdmin", userCtrl.updatePasswordFromAdmin);
+router.patch("/updatePasswordFromAdmin", auth, userCtrl.updatePasswordFromAdmin);
 
 router.patch("/favourite", userCtrl.addFavourite);
 
 router.patch("/removeFavourite", userCtrl.removeFavourite);
 
-router.patch("/changePassword", userCtrl.changePassword);
+router.patch("/changePassword", auth,  userCtrl.changePassword);
 
 router.post("/forgot", userCtrl.forgotPassword);
 

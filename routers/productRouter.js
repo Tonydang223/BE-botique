@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const productCtrl = require("../controllers/productCtrl");
+const auth = require("../middlewares/auth");
 
 router
   .route("/products")
   .get(productCtrl.getAllProducts)
-  .post(productCtrl.createNewProduct);
+  .post(auth ,productCtrl.createNewProduct);
 
 router.post("/productByCategory", productCtrl.getProductsByCategories);
 
@@ -15,7 +16,7 @@ router.get("/relatedProducts", productCtrl.getProductRelated);
 router
   .route("/product")
   .get(productCtrl.getProduct)
-  .patch(productCtrl.updateProduct)
-  .delete(productCtrl.deleteProduct);
+  .patch(auth ,productCtrl.updateProduct)
+  .delete(auth , productCtrl.deleteProduct);
 
 module.exports = router;
